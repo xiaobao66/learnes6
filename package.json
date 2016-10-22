@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel scripts/src -d scripts/dist"
   },
   "author": "xiaobaowei",
   "license": "ISC",
   "devDependencies": {
-    "babel-cli": "^6.16.0"
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0"
   }
 }

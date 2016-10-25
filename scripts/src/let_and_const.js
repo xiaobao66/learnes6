@@ -30,6 +30,13 @@ let b = 123; //报错
 // var c = 1;
 // let c = 2; //报错
 
+function add(x, y) {
+    // let x = 1; //报错
+    x = 1;
+    y = 2;
+    console.log(x, y);
+}
+
 //const
 //声明常量
 const PI = 3.1415926;

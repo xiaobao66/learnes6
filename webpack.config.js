@@ -4,7 +4,8 @@ var webpack = require('webpack')
 module.exports = {
     entry: {
         index: './scripts/src/index.js',
-        let_and_const: './scripts/src/let_and_const.js'
+        let_and_const: './scripts/src/let_and_const.js',
+        destructuring_assign: './scripts/src/destructuring_assign'
     },
     output: {
         path: __dirname + '/scripts/dist/',

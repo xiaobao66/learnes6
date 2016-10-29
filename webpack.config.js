@@ -7,7 +7,8 @@ module.exports = {
         let_and_const: './scripts/src/let_and_const.js',
         destructuring_assign: './scripts/src/destructuring_assign.js',
         string_extend: './scripts/src/string_extend.js',
-        array_extend: './scripts/src/array_extend.js'
+        array_extend: './scripts/src/array_extend.js',
+        function_extend: './scripts/src/function_extend.js'
     },
     output: {
         path: __dirname + '/scripts/dist/',

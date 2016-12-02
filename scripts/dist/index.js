@@ -44,13 +44,9 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
 	__webpack_require__(1);
+	module.exports = __webpack_require__(298);
 
-	console.log([1, 2, 3].map(function (x) {
-	  return x * x;
-	}));
 
 /***/ },
 /* 1 */
@@ -8176,6 +8172,16 @@
 	    return String(it).replace(regExp, replacer);
 	  };
 	};
+
+/***/ },
+/* 298 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	console.log([1, 2, 3].map(function (x) {
+	  return x * x;
+	}));
 
 /***/ }
 /******/ ]);

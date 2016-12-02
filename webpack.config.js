@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: __dirname + '/scripts/dist/',
-        filename: '[name]_[chunkhash:8].js'
+        filename: '[name]-[chunkhash:8].js'
     },
     watch: true,
     module: {

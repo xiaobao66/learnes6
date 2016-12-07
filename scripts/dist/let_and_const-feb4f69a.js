@@ -75,11 +75,11 @@
 	arr2[6](); //5
 
 	//无变量提升
-	console.log(a);
-	console.log(b);
+	console.log(a); //undefined
+	console.log(b); //报错
 
-	var a = 123; //undefined
-	var b = 123; //报错
+	var a = 123;
+	var b = 123;
 
 	//不可重复声明
 	// var c = 1;

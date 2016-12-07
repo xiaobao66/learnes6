@@ -20,11 +20,11 @@ for (let i = 0; i < 10; i++) {
 arr2[6](); //5
 
 //无变量提升
-console.log(a);
-console.log(b);
+console.log(a); //undefined
+console.log(b); //报错
 
-var a = 123; //undefined
-let b = 123; //报错
+var a = 123;
+let b = 123;
 
 //不可重复声明
 // var c = 1;

@@ -27,8 +27,15 @@ var a = 123;
 let b = 123;
 
 //不可重复声明
-// var c = 1;
-// let c = 2; //报错
+// {
+//     var c = 1;
+//     let c = 2; //报错
+// }
+//
+// {
+//     let c = 1;
+//     let c = 2; //报错
+// }
 
 function add(x, y) {
     // let x = 1; //报错

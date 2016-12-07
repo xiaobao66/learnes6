@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -16,7 +17,6 @@ module.exports = {
         path: __dirname + '/scripts/dist/',
         filename: '[name]-[chunkhash:8].js'
     },
-    watch: true,
     module: {
         loaders: [{
             test: /\.js$/,
@@ -61,6 +61,11 @@ module.exports = {
             title: '对象的扩展',
             filename: '../../demos/object_extend.html',
             chunks: ['object_extend']
+        }),
+        new CleanWebpackPlugin(['scripts/dist'], {
+            root: __dirname,
+            verbose: true,
+            dry: false
         })
     ]
 };

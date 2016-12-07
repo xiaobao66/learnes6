@@ -48,6 +48,7 @@ function add(x, y) {
 //声明常量
 const PI = 3.1415926;
 console.log(PI);
+// PI = 3; //报错
 
 //拥有块级作用域
 {
@@ -58,6 +59,12 @@ console.log(PI);
 //不可重复声明
 // var c = 1;
 // const c = 2; //报错
+
+//无法保证复合变量的值不变
+const obj = {};
+obj.name = 'xiaobaowei'; //允许
+
+console.log(obj);
 
 //彻底冻结对象函数
 let constantize = (obj) => {

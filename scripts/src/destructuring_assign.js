@@ -19,12 +19,14 @@ console.log(head, tail);
 // let [x = 3,y = x] = [, 2]; //x = 3, y = 2
 
 //惰性赋值
-// function fun() {
-//     console.log('aaa');
-// }
-//
-// let [x = fun()] = [1];
-// console.log(x);
+function fun() {
+    console.log('aaa');
+}
+
+let [x = fun()] = [1];
+console.log(x); //x = 1
+
+let [xx = fun()] = []; //输出aaa
 
 /*
  * 对象的解构赋值

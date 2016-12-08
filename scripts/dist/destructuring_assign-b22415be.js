@@ -77,16 +77,23 @@
 	// let [x = 3,y = x] = [, 2]; //x = 3, y = 2
 
 	//惰性赋值
-	// function fun() {
-	//     console.log('aaa');
-	// }
-	//
-	// let [x = fun()] = [1];
-	// console.log(x);
+	function fun() {
+	  console.log('aaa');
+	}
+
+	var _ = 1;
+	var x = _ === undefined ? fun() : _;
+
+	console.log(x); //x = 1
+
+	var _ref = [];
+	var _ref$ = _ref[0];
+	var xx = _ref$ === undefined ? fun() : _ref$; //输出aaa
 
 	/*
 	 * 对象的解构赋值
 	 */
+
 	var _x1$x = { x1: 1, x2: 2 };
 	var x2 = _x1$x.x2;
 	var x1 = _x1$x.x1;
@@ -127,11 +134,11 @@
 	/*
 	 * 函数参数的解构赋值
 	 * */
-	function add(_ref) {
-	  var _ref2 = _slicedToArray(_ref, 2);
+	function add(_ref2) {
+	  var _ref3 = _slicedToArray(_ref2, 2);
 
-	  var x = _ref2[0];
-	  var y = _ref2[1];
+	  var x = _ref3[0];
+	  var y = _ref3[1];
 
 	  return x + y;
 	}
@@ -140,12 +147,12 @@
 
 	//设置默认值
 	function subtract() {
-	  var _ref3 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+	  var _ref4 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-	  var _ref3$x = _ref3.x;
-	  var x = _ref3$x === undefined ? 3 : _ref3$x;
-	  var _ref3$y = _ref3.y;
-	  var y = _ref3$y === undefined ? 2 : _ref3$y;
+	  var _ref4$x = _ref4.x;
+	  var x = _ref4$x === undefined ? 3 : _ref4$x;
+	  var _ref4$y = _ref4.y;
+	  var y = _ref4$y === undefined ? 2 : _ref4$y;
 
 	  return x - y;
 	}
@@ -161,9 +168,9 @@
 	//交换变量值
 	var a1 = 1,
 	    a2 = 2;
-	var _ref4 = [a2, a1];
-	a1 = _ref4[0];
-	a2 = _ref4[1];
+	var _ref5 = [a2, a1];
+	a1 = _ref5[0];
+	a2 = _ref5[1];
 
 	console.log(a1, a2);
 

@@ -32,10 +32,10 @@ let [xx = fun()] = []; //输出aaa
  * 对象的解构赋值
  */
 let {x2, x1} = {x1: 1, x2: 2};
-console.log(x1, x2);
+console.log(x1, x2); // x1 = 1, x2 = 2
 
 let {first:f, second:s} = {first: 'hello', second: 'world'};
-console.log(f, s);
+console.log(f, s); // f = 'hello', s = 'world'
 
 //设置默认值
 // let {x = 3, y = x} = {}; //x = 3, y = 3

@@ -98,13 +98,13 @@
 	var x2 = _x1$x.x2;
 	var x1 = _x1$x.x1;
 
-	console.log(x1, x2);
+	console.log(x1, x2); // x1 = 1, x2 = 2
 
 	var _first$second = { first: 'hello', second: 'world' };
 	var f = _first$second.first;
 	var s = _first$second.second;
 
-	console.log(f, s);
+	console.log(f, s); // f = 'hello', s = 'world'
 
 	//设置默认值
 	// let {x = 3, y = x} = {}; //x = 3, y = 3

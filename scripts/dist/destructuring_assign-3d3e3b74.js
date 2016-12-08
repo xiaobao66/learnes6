@@ -124,12 +124,12 @@
 	var h4 = _hello2[3];
 	var h5 = _hello2[4];
 
-	console.log(h1, h2, h3, h4, h5);
+	console.log(h1, h2, h3, h4, h5); // h1 = 'h', h2 = 'e', h3 = 'l', h4 = 'l', h5 = 'o'
 
 	var _hello3 = 'hello';
 	var len = _hello3.length;
 
-	console.log(len);
+	console.log(len); // len = 5
 
 	/*
 	 * 函数参数的解构赋值
@@ -143,7 +143,7 @@
 	  return x + y;
 	}
 
-	console.log(add([1, 2]));
+	console.log(add([1, 2])); // 3
 
 	//设置默认值
 	function subtract() {
@@ -157,10 +157,10 @@
 	  return x - y;
 	}
 
-	console.log(subtract());
-	console.log(subtract({}));
-	console.log(subtract({ x: 4 }));
-	console.log(subtract({ x: 3, y: 1 }));
+	console.log(subtract()); // 1
+	console.log(subtract({})); // 1
+	console.log(subtract({ x: 4 })); // 2
+	console.log(subtract({ x: 3, y: 1 })); // 2
 
 	/*
 	 * 解构赋值用法
@@ -172,7 +172,7 @@
 	a1 = _ref5[0];
 	a2 = _ref5[1];
 
-	console.log(a1, a2);
+	console.log(a1, a2); // a1 = 2, a2 = 1
 
 	//函数返回多个值
 	function assign() {
@@ -186,7 +186,7 @@
 	var b1 = _assign2[0];
 	var b2 = _assign2[1];
 
-	console.log(b1, b2);
+	console.log(b1, b2); // b1 = 1, b2 = 2
 
 	function assign2() {
 	  return {
@@ -200,7 +200,7 @@
 	var c1 = _assign3.c1;
 	var c2 = _assign3.c2;
 
-	console.log(c1, c2);
+	console.log(c1, c2); // c1 = 1, c2 = 2
 
 /***/ }
 /******/ ]);

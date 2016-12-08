@@ -46,10 +46,10 @@ console.log(f, s); // f = 'hello', s = 'world'
  * 字符串的解构赋值
  * */
 let [h1,h2,h3,h4,h5] = 'hello';
-console.log(h1, h2, h3, h4, h5);
+console.log(h1, h2, h3, h4, h5); // h1 = 'h', h2 = 'e', h3 = 'l', h4 = 'l', h5 = 'o'
 
 let {length: len} = 'hello';
-console.log(len);
+console.log(len); // len = 5
 
 /*
  * 函数参数的解构赋值
@@ -58,17 +58,17 @@ function add([x,y]) {
     return x + y;
 }
 
-console.log(add([1, 2]));
+console.log(add([1, 2])); // 3
 
 //设置默认值
 function subtract({x = 3, y = 2} = {}) {
     return x - y;
 }
 
-console.log(subtract());
-console.log(subtract({}));
-console.log(subtract({x: 4}));
-console.log(subtract({x: 3, y: 1}));
+console.log(subtract()); // 1
+console.log(subtract({})); // 1
+console.log(subtract({x: 4})); // 2
+console.log(subtract({x: 3, y: 1})); // 2
 
 /*
  * 解构赋值用法
@@ -76,7 +76,7 @@ console.log(subtract({x: 3, y: 1}));
 //交换变量值
 let a1 = 1, a2 = 2;
 [a1, a2] = [a2, a1];
-console.log(a1, a2);
+console.log(a1, a2); // a1 = 2, a2 = 1
 
 //函数返回多个值
 function assign() {
@@ -84,7 +84,7 @@ function assign() {
 }
 
 let [b1,b2] = assign();
-console.log(b1, b2);
+console.log(b1, b2); // b1 = 1, b2 = 2
 
 function assign2() {
     return {
@@ -94,4 +94,4 @@ function assign2() {
 }
 
 let {c1, c2} = assign2();
-console.log(c1, c2);
+console.log(c1, c2); // c1 = 1, c2 = 2

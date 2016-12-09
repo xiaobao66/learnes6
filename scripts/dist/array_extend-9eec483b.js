@@ -8185,16 +8185,18 @@
 	 * Created by xiaobao on 2016/10/27.
 	 */
 	//Array.from
+	//类似数组的对象
 	var arrayLike = {
 	    0: 'a',
 	    1: 'b',
 	    2: 'c',
 	    length: 3
 	};
-	console.log(Array.from(arrayLike));
+	console.log(Array.from(arrayLike)); // ['a', 'b', 'c']
 
+	//Set数据结构
 	var set = new Set(['a', 'b', 'c']);
-	console.log(Array.from(set));
+	console.log(Array.from(set)); // ['a', 'b', 'c']
 
 	var arr = [1, 2, 3];
 	var arr2 = Array.from(arr); //返回的是一个新的数组
@@ -8205,7 +8207,7 @@
 	var arr3 = Array.from(arr, function (x) {
 	    return x * x;
 	});
-	console.log(arr3);
+	console.log(arr3); //[1, 4, 9]
 
 	//Array.of
 	var arr4 = Array.of();
@@ -8213,12 +8215,19 @@
 	var arr6 = Array.of(1, 2, 3);
 
 	console.log(arr4, arr5, arr6);
+	//arr4 = []
+	//arr5 = [1]
+	//arr6 = [1, 2, 3]
 
 	//copyWithin
 	//Array.prototype.copyWithin(target, start = 0, end = this.length)
-	var copyWithinArr = [1, 2, 3, 4, 5];
-	var targetArr = copyWithinArr.copyWithin(0, 2, 5);
-	console.log(targetArr);
+	var copyWithinArr1 = [1, 2, 3, 4, 5];
+	copyWithinArr1.copyWithin(0, 2, 4);
+	console.log(copyWithinArr1); // [3, 4, 3, 4, 5]
+
+	var copyWithinArr2 = [1, 2, 3, 4, 5];
+	copyWithinArr2.copyWithin(0, 2, 5);
+	console.log(copyWithinArr2); // [3, 4, 5, 4, 5]
 
 	//find和findeIndex
 	var findArr = [1, 2, 3, 4, 5];

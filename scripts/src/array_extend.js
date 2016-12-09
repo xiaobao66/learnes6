@@ -1,8 +1,6 @@
 /**
  * Created by xiaobao on 2016/10/27.
  */
-require('babel-polyfill');
-
 //Array.from
 let arrayLike = {
     0: 'a',

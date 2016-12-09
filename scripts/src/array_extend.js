@@ -54,13 +54,13 @@ let resultIndex = findArr.findIndex((value, index, arr) => {
     return value > 3;
 });
 
-console.log(resultItem, resultIndex);
+console.log(resultItem, resultIndex); //resultItem = 4, resultIndex = 3
 
 //fill
 let fillArr = [1, 2, 3];
 fillArr.fill('a', 1, 2);
 
-console.log(fillArr);
+console.log(fillArr); //fillArr = [1, 'a', 3]
 
 //keys、values、entries
 let originArr = ['a', 'b', 'c'];
@@ -68,15 +68,33 @@ let originArr = ['a', 'b', 'c'];
 for (let index of originArr.keys()) {
     console.log(index);
 }
+// 0
+// 1
+// 2
 
 for (let value of originArr.values()) {
     console.log(value);
 }
+// 'a'
+// 'b'
+// 'c'
 
+//for...of循环默认调用values方法
 for (let value of originArr) {
     console.log(value);
 }
+// 'a'
+// 'b'
+// 'c'
 
 for (let [key,value] of originArr.entries()) {
     console.log(key, value);
 }
+// 0, 'a'
+// 1, 'b'
+// 2, 'c'
+
+//includes
+let includesArr = [1, 2, 3];
+console.log(includesArr.includes(2)); //true
+console.log(includesArr.includes(2, 2)); //false

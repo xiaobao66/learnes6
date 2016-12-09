@@ -8239,13 +8239,13 @@
 	    return value > 3;
 	});
 
-	console.log(resultItem, resultIndex);
+	console.log(resultItem, resultIndex); //resultItem = 4, resultIndex = 3
 
 	//fill
 	var fillArr = [1, 2, 3];
 	fillArr.fill('a', 1, 2);
 
-	console.log(fillArr);
+	console.log(fillArr); //fillArr = [1, 'a', 3]
 
 	//keys、values、entries
 	var originArr = ['a', 'b', 'c'];
@@ -8260,6 +8260,9 @@
 
 	        console.log(index);
 	    }
+	    // 0
+	    // 1
+	    // 2
 	} catch (err) {
 	    _didIteratorError = true;
 	    _iteratorError = err;
@@ -8285,6 +8288,11 @@
 
 	        console.log(value);
 	    }
+	    // 'a'
+	    // 'b'
+	    // 'c'
+
+	    //for...of循环默认调用values方法
 	} catch (err) {
 	    _didIteratorError2 = true;
 	    _iteratorError2 = err;
@@ -8310,6 +8318,9 @@
 
 	        console.log(_value);
 	    }
+	    // 'a'
+	    // 'b'
+	    // 'c'
 	} catch (err) {
 	    _didIteratorError3 = true;
 	    _iteratorError3 = err;
@@ -8338,6 +8349,11 @@
 
 	        console.log(key, _value2);
 	    }
+	    // 0, 'a'
+	    // 1, 'b'
+	    // 2, 'c'
+
+	    //includes
 	} catch (err) {
 	    _didIteratorError4 = true;
 	    _iteratorError4 = err;
@@ -8352,6 +8368,10 @@
 	        }
 	    }
 	}
+
+	var includesArr = [1, 2, 3];
+	console.log(includesArr.includes(2)); //true
+	console.log(includesArr.includes(2, 2)); //false
 
 /***/ }
 /******/ ]);

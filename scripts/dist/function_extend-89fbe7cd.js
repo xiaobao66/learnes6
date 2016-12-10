@@ -58,9 +58,9 @@
 	    console.log(x, y);
 	}
 
-	say('hello');
-	say('hello', 'Sam');
-	say('hello', '');
+	say('hello'); // hello xiaobao
+	say('hello', 'Sam'); // hello Sam
+	say('hello', ''); // hello
 
 	//函数参数是默认声明，不能用let和const再次声明
 	// function f(x = 1) {
@@ -126,47 +126,69 @@
 	    return sum;
 	}
 
-	add(1);
-	add(1, 2, 3);
+	console.log(add(1)); // sum = 1
+	console.log(add(1, 2, 3)); // sum = 6
 
 	//扩展运算符...
 	//用于函数调用
-	(_console = console).log.apply(_console, [1, 2, 3]);
+	(_console = console).log.apply(_console, [1, 2, 3]); // 1, 2, 3
 
 	function add2(x, y) {
 	    return x + y;
 	}
 
-	console.log(add2.apply(undefined, [1, 2]));
+	console.log(add2.apply(undefined, [1, 2])); // 3
 
 	//箭头函数=>
+	var mod = function mod(x, y) {
+	    return x % y;
+	};
+
+	var mod2 = function mod2(x, y) {
+	    return x % y;
+	};
+
+	console.log(mod(11, 2)); // 1
+	console.log(mod2(11, 2)); // 1
+
 	var log = function log(_ref) {
 	    var firstName = _ref.firstName;
 	    var lastName = _ref.lastName;
 
-	    return firstName + ' ' + lastName;
+	    console.log(firstName + ' ' + lastName);
 	};
 
-	console.log(log({
+	log({
 	    firstName: 'xiaobao',
 	    lastName: 'wei'
-	}));
+	}); // xiaobao wei
 
 	//箭头函数this指向函数定义时所在的对象
-	// function Timer() {
-	//     this.s1 = 0;
-	//     this.s2 = 0;
-	//
-	//     setInterval(()=>this.s1++, 1000);
-	//     setInterval(function () {
-	//         this.s2++;
-	//     }, 1000);
-	// }
-	//
-	// let timer = new Timer();
-	//
-	// setTimeout(()=>console.log('s1: ', timer.s1), 3100); // s1: 3
-	// setTimeout(()=>console.log('s2: ', timer.s2), 3100); // s2: 0
+	function Timer() {
+	    var _this = this;
+
+	    this.s1 = 0;
+	    this.s2 = 0;
+
+	    //箭头函数
+	    setInterval(function () {
+	        return _this.s1++;
+	    }, 1000);
+
+	    //普通函数
+	    setInterval(function () {
+	        this.s2++;
+	    }, 1000);
+	}
+
+	var timer = new Timer();
+
+	setTimeout(function () {
+	    return console.log('s1: ', timer.s1);
+	}, 3100); // s1: 3
+	setTimeout(function () {
+	    return console.log('s2: ', timer.s2);
+	}, 3100); // s2: 0
 
 /***/ }
 /******/ ]);

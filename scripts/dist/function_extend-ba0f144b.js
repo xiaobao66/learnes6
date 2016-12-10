@@ -164,6 +164,7 @@
 	}); // xiaobao wei
 
 	//箭头函数this指向函数定义时所在的对象
+	window.s2 = 0;
 	function Timer() {
 	    var _this = this;
 
@@ -184,11 +185,14 @@
 	var timer = new Timer();
 
 	setTimeout(function () {
-	    return console.log('s1: ', timer.s1);
-	}, 3100); // s1: 3
+	    return console.log('timer.s1: ', timer.s1);
+	}, 3100); // timer.s1: 3
 	setTimeout(function () {
-	    return console.log('s2: ', timer.s2);
-	}, 3100); // s2: 0
+	    return console.log('timer.s2: ', timer.s2);
+	}, 3100); // timer.s2: 0
+	setTimeout(function () {
+	    return console.log('window.s2: ', s2);
+	}, 3100); //window.s2: 3
 
 /***/ }
 /******/ ]);

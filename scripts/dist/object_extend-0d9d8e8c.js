@@ -100,21 +100,29 @@
 	};
 
 	Object.assign(target, source1, source2);
-	target.say();
+	target.say(); // xiaobao, male, 1994/04/22
 
 	/*
 	 * 对象属性的遍历
 	 * */
-	var traverseObj = {
+	var traverseObj = _defineProperty({
 	    name: 'xiaobao',
 	    sex: 'male',
 	    birth: '1994/04/22'
-	};
+	}, Symbol('school'), 'hust');
+	Object.setPrototypeOf(traverseObj, { species: 'human' });
+
 	//for...in
 	//遍历对象自身和继承的可枚举属性（不包括Symbol属性）
 	for (var key in traverseObj) {
 	    console.log(key);
 	}
+	/*
+	name
+	sex
+	birth
+	species
+	*/
 
 	//Object.keys
 	//遍历对象自身的可枚举属性（不包括Symbol属性）
@@ -128,6 +136,11 @@
 
 	        console.log(_key);
 	    }
+	    /*
+	    name
+	    sex
+	    birth
+	    */
 
 	    //Object.getOwnPropertyNames
 	    //遍历对象自身的所有属性（包括不可枚举属性、不包括Symbol属性）
@@ -156,9 +169,14 @@
 
 	        console.log(_key2);
 	    }
+	    /*
+	     name
+	     sex
+	     birth
+	     */
 
-	    //Reflect.ownKeys
-	    //遍历对象自身的所有属性（包括Symbol属性、不可枚举属性）
+	    //Object.getOwnPropertySymbols
+	    //遍历对象自身的Symbol属性
 	} catch (err) {
 	    _didIteratorError2 = true;
 	    _iteratorError2 = err;
@@ -179,17 +197,17 @@
 	var _iteratorError3 = undefined;
 
 	try {
-	    for (var _iterator3 = Reflect.ownKeys(traverseObj)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+	    for (var _iterator3 = Object.getOwnPropertySymbols(traverseObj)[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
 	        var _key3 = _step3.value;
 
 	        console.log(_key3);
 	    }
-
 	    /*
-	     * Object.setPrototypeOf
-	     * Object.getPrototypeOf
-	     * Object.create
-	     * */
+	    Symbol('school')
+	    */
+
+	    //Reflect.ownKeys
+	    //遍历对象自身的所有属性（包括Symbol属性、不可枚举属性）
 	} catch (err) {
 	    _didIteratorError3 = true;
 	    _iteratorError3 = err;
@@ -205,6 +223,43 @@
 	    }
 	}
 
+	var _iteratorNormalCompletion4 = true;
+	var _didIteratorError4 = false;
+	var _iteratorError4 = undefined;
+
+	try {
+	    for (var _iterator4 = Reflect.ownKeys(traverseObj)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	        var _key4 = _step4.value;
+
+	        console.log(_key4);
+	    }
+	    /*
+	    name
+	    sex
+	    birth
+	    Symbol('school')
+	    */
+
+	    /*
+	     * Object.setPrototypeOf
+	     * Object.getPrototypeOf
+	     * Object.create
+	     * */
+	} catch (err) {
+	    _didIteratorError4 = true;
+	    _iteratorError4 = err;
+	} finally {
+	    try {
+	        if (!_iteratorNormalCompletion4 && _iterator4.return) {
+	            _iterator4.return();
+	        }
+	    } finally {
+	        if (_didIteratorError4) {
+	            throw _iteratorError4;
+	        }
+	    }
+	}
+
 	var obj = {};
 	var protoObj = {
 	    x: 10
@@ -212,13 +267,13 @@
 
 	Object.setPrototypeOf(obj, protoObj);
 
-	console.log(obj.x);
+	console.log(obj.x); // 10
 
 	Object.getPrototypeOf(obj).x = 8;
-	console.log(obj.x);
+	console.log(obj.x); // 8
 
 	var obj2 = Object.create(protoObj);
-	console.log(obj2.x);
+	console.log(obj2.x); // 8
 
 /***/ }
 /******/ ]);

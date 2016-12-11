@@ -51,7 +51,7 @@ let target = {},
     };
 
 Object.assign(target, source1, source2);
-target.say();
+target.say(); // xiaobao, male, 1994/04/22
 
 /*
  * 对象属性的遍历
@@ -59,31 +59,65 @@ target.say();
 let traverseObj = {
     name: 'xiaobao',
     sex: 'male',
-    birth: '1994/04/22'
+    birth: '1994/04/22',
+    [Symbol('school')]: 'hust'
 };
+Object.setPrototypeOf(traverseObj, {species: 'human'});
+
 //for...in
 //遍历对象自身和继承的可枚举属性（不包括Symbol属性）
 for (let key in traverseObj) {
     console.log(key);
 }
+/*
+name
+sex
+birth
+species
+*/
 
 //Object.keys
 //遍历对象自身的可枚举属性（不包括Symbol属性）
 for (let key of Object.keys(traverseObj)) {
     console.log(key);
 }
+/*
+name
+sex
+birth
+*/
 
 //Object.getOwnPropertyNames
 //遍历对象自身的所有属性（包括不可枚举属性、不包括Symbol属性）
 for (let key of Object.getOwnPropertyNames(traverseObj)) {
     console.log(key);
 }
+/*
+ name
+ sex
+ birth
+ */
+
+//Object.getOwnPropertySymbols
+//遍历对象自身的Symbol属性
+for (let key of Object.getOwnPropertySymbols(traverseObj)) {
+    console.log(key);
+}
+/*
+Symbol('school')
+*/
 
 //Reflect.ownKeys
 //遍历对象自身的所有属性（包括Symbol属性、不可枚举属性）
 for (let key of Reflect.ownKeys(traverseObj)) {
     console.log(key);
 }
+/*
+name
+sex
+birth
+Symbol('school')
+*/
 
 /*
  * Object.setPrototypeOf
@@ -97,10 +131,10 @@ let protoObj = {
 
 Object.setPrototypeOf(obj, protoObj);
 
-console.log(obj.x);
+console.log(obj.x); // 10
 
 Object.getPrototypeOf(obj).x = 8;
-console.log(obj.x);
+console.log(obj.x); // 8
 
 let obj2 = Object.create(protoObj);
-console.log(obj2.x);
+console.log(obj2.x); // 8

@@ -13,19 +13,27 @@ let person = {
     }
 };
 
-person.say();
+person.say(); // hello xiaobao
 
 /*
  * 属性名表达式
  * */
 let person2 = {
-    name: name,
+    name,
     ['s' + 'ay']() {
         console.log('hello ' + this.name);
     }
 };
 
-person2.say();
+person2.say(); // hello xiaobao
+
+/*
+ * Object.is方法
+ * */
+console.log(Object.is(+0, -0)); // false
+console.log(Object.is(NaN, NaN)); // true
+console.log(Object.is('hello', 'hello')); // true
+console.log(Object.is(1, 1)); // true
 
 /*
  * Object.assign合并对象自身可枚举的属性，浅拷贝

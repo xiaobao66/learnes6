@@ -11,7 +11,8 @@ module.exports = {
         string_extend: './scripts/src/string_extend.js',
         array_extend: ['babel-polyfill', './scripts/src/array_extend.js'],
         function_extend: './scripts/src/function_extend.js',
-        object_extend: './scripts/src/object_extend.js'
+        object_extend: './scripts/src/object_extend.js',
+        symbol: './scripts/src/symbol.js'
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -61,6 +62,11 @@ module.exports = {
             title: '对象的扩展',
             filename: '../../demos/object_extend.html',
             chunks: ['object_extend']
+        }),
+        new HtmlWebpackPlugin({
+            title: "学习Symbol",
+            filename: '../../demos/symbol.html',
+            chunks: ['symbol']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

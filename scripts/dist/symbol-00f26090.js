@@ -53,10 +53,12 @@
 	 */
 	//Symbol——独一无二的值
 	var s1 = Symbol(),
-	    s2 = Symbol('xiaobao');
+	    s2 = Symbol('xiaobao'),
+	    s22 = Symbol('xiaobao');
 
 	console.log(s1); // Symbol()
 	console.log(s2); // Symbol(xiaobao)
+	console.log(s2 === s22); // false
 
 	//作为对象属性的Symbol, 不能使用点（.）运算符
 	var name = Symbol('name'),

@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	var _console, _console2, _console3;
 
@@ -79,6 +79,9 @@
 
 	set3.delete(6);
 	console.log(set3.has(6)); // false
+
+	set3.clear();
+	console.log(set3.size); // 0
 
 	//去除数组重复元素的方法
 	function removeDuplicateElements(array) {
@@ -236,6 +239,161 @@
 
 	weakSet.delete(item);
 	console.log(weakSet.has(item)); // false
+
+	//Map
+	//创建一个Map
+	var map = new Map();
+	var key = { name: 'xiaobao' };
+
+	map.set(key, { sex: 'male' });
+	console.log(map.get(key)); //{sex: "male"}
+
+	var map2 = new Map([[key, { sex: 'male' }]]);
+	console.log(map2.get(key)); //{sex: "male"}
+
+	//Map的属性和方法
+	//size属性
+	var map3 = new Map([['name', 'xiaobao'], ['sex', 'male']]);
+
+	console.log(map3.size); // 2
+
+	//操作方法
+	//set()
+	map3.set('school', 'hust');
+
+	//get()
+	console.log(map3.get('school')); // 'hust'
+
+	//has()
+	console.log(map3.has('school')); // true
+
+	//delete()
+	map3.delete('school');
+	console.log(map3.has('school')); // false
+
+	//clear()
+	map3.clear();
+	console.log(map3.size); // 0
+
+	//遍历方法
+	//keys()
+	var map4 = new Map([['name', 'xiaobao'], ['sex', 'male']]);
+
+	var _iteratorNormalCompletion4 = true;
+	var _didIteratorError4 = false;
+	var _iteratorError4 = undefined;
+
+	try {
+	    for (var _iterator4 = map4.keys()[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+	        var _item4 = _step4.value;
+
+	        console.log(_item4);
+	    }
+	    /*
+	     name
+	     sex
+	     */
+
+	    //values()
+	} catch (err) {
+	    _didIteratorError4 = true;
+	    _iteratorError4 = err;
+	} finally {
+	    try {
+	        if (!_iteratorNormalCompletion4 && _iterator4.return) {
+	            _iterator4.return();
+	        }
+	    } finally {
+	        if (_didIteratorError4) {
+	            throw _iteratorError4;
+	        }
+	    }
+	}
+
+	var _iteratorNormalCompletion5 = true;
+	var _didIteratorError5 = false;
+	var _iteratorError5 = undefined;
+
+	try {
+	    for (var _iterator5 = map4.values()[Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {
+	        var _item5 = _step5.value;
+
+	        console.log(_item5);
+	    }
+	    /*
+	     xiaobao
+	     male
+	     */
+
+	    //entries()
+	} catch (err) {
+	    _didIteratorError5 = true;
+	    _iteratorError5 = err;
+	} finally {
+	    try {
+	        if (!_iteratorNormalCompletion5 && _iterator5.return) {
+	            _iterator5.return();
+	        }
+	    } finally {
+	        if (_didIteratorError5) {
+	            throw _iteratorError5;
+	        }
+	    }
+	}
+
+	var _iteratorNormalCompletion6 = true;
+	var _didIteratorError6 = false;
+	var _iteratorError6 = undefined;
+
+	try {
+	    for (var _iterator6 = map4.entries()[Symbol.iterator](), _step6; !(_iteratorNormalCompletion6 = (_step6 = _iterator6.next()).done); _iteratorNormalCompletion6 = true) {
+	        var _item6 = _step6.value;
+
+	        console.log(_item6);
+	    }
+	    /*
+	     ['name', 'xiaobao']
+	     ['sex', 'male']
+	     */
+
+	    //forEach
+	} catch (err) {
+	    _didIteratorError6 = true;
+	    _iteratorError6 = err;
+	} finally {
+	    try {
+	        if (!_iteratorNormalCompletion6 && _iterator6.return) {
+	            _iterator6.return();
+	        }
+	    } finally {
+	        if (_didIteratorError6) {
+	            throw _iteratorError6;
+	        }
+	    }
+	}
+
+	map4.forEach(function (value, key) {
+	    return console.log(key, value);
+	});
+	/*
+	 name xiaobao
+	 sex male
+	 */
+
+	//WeakMap
+	//键只能是对象
+	var weakMap = new WeakMap(),
+	    weakKey = {
+	    name: 'xiaobao'
+	};
+	weakMap.set(weakKey, { sex: 'male' });
+
+	console.log(weakMap.get(weakKey)); // {sex: 'male'}
+
+	console.log(weakMap.has(weakKey)); // true
+
+	weakMap.delete(weakKey);
+	console.log(weakMap.has(weakKey)); // false
 
 /***/ }
 /******/ ]);

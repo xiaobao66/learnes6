@@ -12,7 +12,8 @@ module.exports = {
         array_extend: ['babel-polyfill', './scripts/src/array_extend.js'],
         function_extend: './scripts/src/function_extend.js',
         object_extend: './scripts/src/object_extend.js',
-        symbol: './scripts/src/symbol.js'
+        symbol: './scripts/src/symbol.js',
+        set_and_map: './scripts/src/set_and_map.js'
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -67,6 +68,11 @@ module.exports = {
             title: "学习Symbol",
             filename: '../../demos/symbol.html',
             chunks: ['symbol']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'set_and_map',
+            filename: '../../demos/set_and_map.html',
+            chunks: ['set_and_map']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

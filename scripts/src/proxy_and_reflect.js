@@ -113,6 +113,23 @@ let constructProxy = new Proxy(function () {
 let resultObj = new constructProxy(1, 2, 3); //args: 1|2|3
 console.log(resultObj.value); //6
 
+//proxy的this指向
+let targetObj = {
+    m() {
+        console.log(`this指向目标对象: ${this === targetObj}`);
+        console.log(`this指向代理对象: ${this === proxyObj}`);
+    }
+};
+
+let proxyObj = new Proxy(targetObj, {});
+targetObj.m();
+//this指向目标对象: true
+//this指向代理对象: false
+
+proxyObj.m();
+//this指向目标对象: false
+//this指向代理对象: true
+
 /*
  Reflect对象
  */

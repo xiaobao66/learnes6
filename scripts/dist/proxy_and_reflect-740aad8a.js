@@ -164,6 +164,23 @@
 	var resultObj = new constructProxy(1, 2, 3); //args: 1|2|3
 	console.log(resultObj.value); //6
 
+	//proxy的this指向
+	var targetObj = {
+	    m: function m() {
+	        console.log('this\u6307\u5411\u76EE\u6807\u5BF9\u8C61: ' + (this === targetObj));
+	        console.log('this\u6307\u5411\u4EE3\u7406\u5BF9\u8C61: ' + (this === proxyObj));
+	    }
+	};
+
+	var proxyObj = new Proxy(targetObj, {});
+	targetObj.m();
+	//this指向目标对象: true
+	//this指向代理对象: false
+
+	proxyObj.m();
+	//this指向目标对象: false
+	//this指向代理对象: true
+
 	/*
 	 Reflect对象
 	 */

@@ -110,5 +110,95 @@ let constructProxy = new Proxy(function () {
     }
 });
 
-let obj = new constructProxy(1, 2, 3); //args: 1|2|3
-console.log(obj.value); //6
+let resultObj = new constructProxy(1, 2, 3); //args: 1|2|3
+console.log(resultObj.value); //6
+
+/*
+ Reflect对象
+ */
+/*
+ 介绍Reflect的常用方法
+ */
+//Reflect.get(target, key, receiver)
+let school = {
+    class: 20,
+    total: 10000,
+    get average() {
+        return Math.floor(this.total / this.class);
+    }
+};
+
+let newSchool = {
+    class: 30,
+    total: 12000
+};
+
+console.log(Reflect.get(school, 'class')); //20
+console.log(Reflect.get(school, 'total')); //10000
+
+console.log(Reflect.get(school, 'average')); //500
+console.log(Reflect.get(school, 'average', newSchool)); //400
+
+//Reflect.set(target, key, value, receiver)
+let goods = {
+    total: 100,
+    set average(value) {
+        return this.amount = Math.floor(this.total / value);
+    }
+};
+
+let newGoods = {
+    total: 20000
+};
+
+console.log(goods.amount); //undefined
+
+Reflect.set(goods, 'average', 4);
+console.log(goods.amount); //25
+
+Reflect.set(goods, 'average', 40, newGoods);
+console.log(goods.amount); //25
+console.log(newGoods.amount); //500
+
+//Reflect.has(target, key)
+console.log(Reflect.has(goods, 'total')); // true
+
+//Reflect.deleteProperty(target, key)
+Reflect.deleteProperty(goods, 'amount');
+console.log(goods.amount); //undefined
+
+//Reflect.contruct(target, args)
+function Cat(name) {
+    this.name = name;
+}
+
+let cat = Reflect.construct(Cat, ['mimi']);
+console.log(cat.name); //mimi
+
+//Reflect.apply(func, thisArg, args)
+let numbers = [10, 12, 33, 24, 53, 11, 20];
+
+console.log(Reflect.apply(Math.min, Math, numbers)); //10
+
+//Proxy实现观察者模式
+let observerSet = new Set(),
+    observe = fn => observerSet.add(fn),
+    observable = obj => new Proxy(obj, {
+        set(target, key, value, receiver) {
+            let result = Reflect.set(target, key, value, receiver);
+            observerSet.forEach(observer => observer());
+            return result;
+        }
+    });
+
+let animal = observable({
+    name: 'LaiFu',
+    age: 8
+});
+
+let print = () => {
+    console.log(`${animal.name} ${animal.age}`);
+};
+
+observe(print);
+animal.name = 'WangCai'; //WangCai 8

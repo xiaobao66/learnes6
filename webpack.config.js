@@ -13,7 +13,8 @@ module.exports = {
         function_extend: './scripts/src/function_extend.js',
         object_extend: './scripts/src/object_extend.js',
         symbol: './scripts/src/symbol.js',
-        set_and_map: './scripts/src/set_and_map.js'
+        set_and_map: './scripts/src/set_and_map.js',
+        proxy_and_reflect: './scripts/src/proxy_and_reflect.js'
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -73,6 +74,11 @@ module.exports = {
             title: 'set_and_map',
             filename: '../../demos/set_and_map.html',
             chunks: ['set_and_map']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'proxy_and_reflect',
+            filename: '../../demos/proxy_and_reflect.html',
+            chunks: ['proxy_and_reflect']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

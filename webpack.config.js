@@ -14,7 +14,8 @@ module.exports = {
         object_extend: './scripts/src/object_extend.js',
         symbol: './scripts/src/symbol.js',
         set_and_map: './scripts/src/set_and_map.js',
-        proxy_and_reflect: './scripts/src/proxy_and_reflect.js'
+        proxy_and_reflect: './scripts/src/proxy_and_reflect.js',
+        generator: ['babel-polyfill', './scripts/src/generator.js']
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -79,6 +80,11 @@ module.exports = {
             title: 'proxy_and_reflect',
             filename: '../../demos/proxy_and_reflect.html',
             chunks: ['proxy_and_reflect']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'generator',
+            filename: '../../demos/generator.html',
+            chunks: ['generator']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

@@ -106,6 +106,21 @@ for (let [key, value] of me2) {
  lastName: Wei
  */
 
+//Generator.prototype.return()
+let genReturn = function* () {
+    yield 1;
+    yield 2;
+    yield 3;
+    yield 4;
+};
+
+let gReturn = genReturn();
+
+console.log(gReturn.next()); //{value: 1, done: false}
+console.log(gReturn.next()); //{value: 2, done: false}
+console.log(gReturn.return(5)); //{value: 5, done: true}
+console.log(gReturn.next()); //{value: undefined, done: true}
+
 //yield* 语句
 //不带return返回值
 function* inner() {

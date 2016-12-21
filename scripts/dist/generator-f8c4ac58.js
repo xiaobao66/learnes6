@@ -8547,8 +8547,7 @@
 	     lastName: Wei
 	     */
 
-	    //yield* 语句
-	    //不带return返回值
+	    //Generator.prototype.return()
 	} catch (err) {
 	    _didIteratorError5 = true;
 	    _iteratorError5 = err;
@@ -8564,44 +8563,81 @@
 	    }
 	}
 
-	function inner() {
-	    return regeneratorRuntime.wrap(function inner$(_context6) {
+	var genReturn = regeneratorRuntime.mark(function genReturn() {
+	    return regeneratorRuntime.wrap(function genReturn$(_context6) {
 	        while (1) {
 	            switch (_context6.prev = _context6.next) {
 	                case 0:
 	                    _context6.next = 2;
-	                    return 2;
+	                    return 1;
 
 	                case 2:
 	                    _context6.next = 4;
+	                    return 2;
+
+	                case 4:
+	                    _context6.next = 6;
+	                    return 3;
+
+	                case 6:
+	                    _context6.next = 8;
+	                    return 4;
+
+	                case 8:
+	                case 'end':
+	                    return _context6.stop();
+	            }
+	        }
+	    }, genReturn, this);
+	});
+
+	var gReturn = genReturn();
+
+	console.log(gReturn.next()); //{value: 1, done: false}
+	console.log(gReturn.next()); //{value: 2, done: false}
+	console.log(gReturn.return(5)); //{value: 5, done: true}
+	console.log(gReturn.next()); //{value: undefined, done: true}
+
+	//yield* 语句
+	//不带return返回值
+	function inner() {
+	    return regeneratorRuntime.wrap(function inner$(_context7) {
+	        while (1) {
+	            switch (_context7.prev = _context7.next) {
+	                case 0:
+	                    _context7.next = 2;
+	                    return 2;
+
+	                case 2:
+	                    _context7.next = 4;
 	                    return 3;
 
 	                case 4:
 	                case 'end':
-	                    return _context6.stop();
+	                    return _context7.stop();
 	            }
 	        }
 	    }, _marked[5], this);
 	}
 
 	function outer() {
-	    return regeneratorRuntime.wrap(function outer$(_context7) {
+	    return regeneratorRuntime.wrap(function outer$(_context8) {
 	        while (1) {
-	            switch (_context7.prev = _context7.next) {
+	            switch (_context8.prev = _context8.next) {
 	                case 0:
-	                    _context7.next = 2;
+	                    _context8.next = 2;
 	                    return 1;
 
 	                case 2:
-	                    return _context7.delegateYield(inner(), 't0', 3);
+	                    return _context8.delegateYield(inner(), 't0', 3);
 
 	                case 3:
-	                    _context7.next = 5;
+	                    _context8.next = 5;
 	                    return 4;
 
 	                case 5:
 	                case 'end':
-	                    return _context7.stop();
+	                    return _context8.stop();
 	            }
 	        }
 	    }, _marked[6], this);
@@ -8611,23 +8647,23 @@
 
 	//带return返回值
 	function inner2() {
-	    return regeneratorRuntime.wrap(function inner2$(_context8) {
+	    return regeneratorRuntime.wrap(function inner2$(_context9) {
 	        while (1) {
-	            switch (_context8.prev = _context8.next) {
+	            switch (_context9.prev = _context9.next) {
 	                case 0:
-	                    _context8.next = 2;
+	                    _context9.next = 2;
 	                    return 2;
 
 	                case 2:
-	                    _context8.next = 4;
+	                    _context9.next = 4;
 	                    return 3;
 
 	                case 4:
-	                    return _context8.abrupt('return', 'inner ends');
+	                    return _context9.abrupt('return', 'inner ends');
 
 	                case 5:
 	                case 'end':
-	                    return _context8.stop();
+	                    return _context9.stop();
 	            }
 	        }
 	    }, _marked[7], this);
@@ -8635,26 +8671,26 @@
 
 	function outer2() {
 	    var result;
-	    return regeneratorRuntime.wrap(function outer2$(_context9) {
+	    return regeneratorRuntime.wrap(function outer2$(_context10) {
 	        while (1) {
-	            switch (_context9.prev = _context9.next) {
+	            switch (_context10.prev = _context10.next) {
 	                case 0:
-	                    _context9.next = 2;
+	                    _context10.next = 2;
 	                    return 1;
 
 	                case 2:
-	                    return _context9.delegateYield(inner2(), 't0', 3);
+	                    return _context10.delegateYield(inner2(), 't0', 3);
 
 	                case 3:
-	                    result = _context9.t0;
+	                    result = _context10.t0;
 
 	                    console.log(result);
-	                    _context9.next = 7;
+	                    _context10.next = 7;
 	                    return 4;
 
 	                case 7:
 	                case 'end':
-	                    return _context9.stop();
+	                    return _context10.stop();
 	            }
 	        }
 	    }, _marked[8], this);

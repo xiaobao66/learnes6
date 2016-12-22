@@ -8186,14 +8186,71 @@
 	 * Created by xiaobao on 2016/12/22.
 	 */
 	//使用Promise
-	var time = new Promise(function (resolve, reject) {
+	var timeout = new Promise(function (resolve, reject) {
 	    setTimeout(function () {
 	        resolve('done');
-	    }, 1000);
+	    }, 100);
 	});
 
-	time.then(function (value) {
+	timeout.then(function (value) {
 	    console.log(value);
+	});
+	//'done'
+
+	var getGitHubUsers = function getGitHubUsers(url) {
+	    var promise = new Promise(function (resolve, reject) {
+	        var xmlHttp = new XMLHttpRequest();
+	        xmlHttp.open('GET', url, true);
+	        xmlHttp.onreadystatechange = function () {
+	            if (this.readyState !== 4) {
+	                return;
+	            }
+	            if (this.status === 200) {
+	                resolve(this.response);
+	            } else {
+	                reject(new Error(this.statusText));
+	            }
+	        };
+	        xmlHttp.responseType = 'json';
+	        xmlHttp.setRequestHeader('Accept', 'application/json');
+	        xmlHttp.send();
+	    });
+
+	    return promise;
+	};
+
+	getGitHubUsers('https://api.github.com/search/users?q=xiaobao66').then(function (json) {
+	    var userItems = {};
+	    var _iteratorNormalCompletion = true;
+	    var _didIteratorError = false;
+	    var _iteratorError = undefined;
+
+	    try {
+	        for (var _iterator = json.items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+	            var userItem = _step.value;
+
+	            userItems[userItem.login] = userItem.score;
+	        }
+	    } catch (err) {
+	        _didIteratorError = true;
+	        _iteratorError = err;
+	    } finally {
+	        try {
+	            if (!_iteratorNormalCompletion && _iterator.return) {
+	                _iterator.return();
+	            }
+	        } finally {
+	            if (_didIteratorError) {
+	                throw _iteratorError;
+	            }
+	        }
+	    }
+
+	    return userItems;
+	}, function (error) {
+	    console.error('Ajax error: ' + error);
+	}).then(function (userItems) {
+	    console.log(userItems);
 	});
 
 /***/ }

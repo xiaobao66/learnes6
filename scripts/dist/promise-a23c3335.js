@@ -8197,7 +8197,8 @@
 	});
 	//'done'
 
-	var getGitHubUsers = function getGitHubUsers(url) {
+	//Promise.prototype.then
+	var getJson = function getJson(url) {
 	    var promise = new Promise(function (resolve, reject) {
 	        var xmlHttp = new XMLHttpRequest();
 	        xmlHttp.open('GET', url, true);
@@ -8219,7 +8220,7 @@
 	    return promise;
 	};
 
-	getGitHubUsers('https://api.github.com/search/users?q=xiaobao66').then(function (json) {
+	getJson('https://api.github.com/search/users?q=xiaobao66').then(function (json) {
 	    var userItems = {};
 	    var _iteratorNormalCompletion = true;
 	    var _didIteratorError = false;
@@ -8248,9 +8249,22 @@
 
 	    return userItems;
 	}, function (error) {
-	    console.error('Ajax error: ' + error);
+	    console.error('Ajax error: ', error);
 	}).then(function (userItems) {
 	    console.log(userItems);
+	});
+
+	//Promise.prototype.catch
+	var errPromise = new Promise(function (resolve, reject) {
+	    setTimeout(function () {
+	        // reject(new Error('Throw err'));
+	        throw new Error('Throw err');
+	    }, 500);
+	});
+	errPromise.then(function (json) {
+	    console.log(json);
+	}).catch(function (err) {
+	    console.error(err);
 	});
 
 /***/ }

@@ -13,7 +13,8 @@ timeout.then((value) => {
 });
 //'done'
 
-let getGitHubUsers = function (url) {
+//Promise.prototype.then
+let getJson = function (url) {
     let promise = new Promise((resolve, reject) => {
         let xmlHttp = new XMLHttpRequest();
         xmlHttp.open('GET', url, true);
@@ -35,14 +36,27 @@ let getGitHubUsers = function (url) {
     return promise;
 };
 
-getGitHubUsers('https://api.github.com/search/users?q=xiaobao66').then((json) => {
+getJson('https://api.github.com/search/users?q=xiaobao66').then((json) => {
     let userItems = {};
     for (let userItem of json.items) {
         userItems[userItem.login] = userItem.score;
     }
     return userItems;
 }, (error) => {
-    console.error('Ajax error: ' + error);
+    console.error('Ajax error: ', error);
 }).then((userItems) => {
     console.log(userItems);
+});
+
+//Promise.prototype.catch
+let errPromise = new Promise((resolve, reject) => {
+    setTimeout(function () {
+        // reject(new Error('Throw err'));
+        throw new Error('Throw err');
+    }, 500);
+});
+errPromise.then((json) => {
+    console.log(json);
+}).catch((err) => {
+    console.error(err);
 });

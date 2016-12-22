@@ -15,7 +15,8 @@ module.exports = {
         symbol: './scripts/src/symbol.js',
         set_and_map: './scripts/src/set_and_map.js',
         proxy_and_reflect: './scripts/src/proxy_and_reflect.js',
-        generator: ['babel-polyfill', './scripts/src/generator.js']
+        generator: ['babel-polyfill', './scripts/src/generator.js'],
+        promise: ['babel-polyfill', './scripts/src/promise.js']
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -85,6 +86,11 @@ module.exports = {
             title: 'generator',
             filename: '../../demos/generator.html',
             chunks: ['generator']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'promise',
+            filename: '../../demos/promise.html',
+            chunks: ['promise']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

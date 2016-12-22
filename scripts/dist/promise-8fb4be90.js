@@ -8256,15 +8256,15 @@
 
 	//Promise.prototype.catch
 	var errPromise = new Promise(function (resolve, reject) {
-	    setTimeout(function () {
-	        // reject(new Error('Throw err'));
-	        throw new Error('Throw err');
-	    }, 500);
+	    throw new Error('Throw err');
 	});
 	errPromise.then(function (json) {
 	    console.log(json);
 	}).catch(function (err) {
 	    console.error(err);
+	    return 'hello';
+	}).then(function (value) {
+	    console.log(value);
 	});
 
 /***/ }

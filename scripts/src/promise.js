@@ -41,6 +41,7 @@ getJson('https://api.github.com/search/users?q=xiaobao66').then((json) => {
     for (let userItem of json.items) {
         userItems[userItem.login] = userItem.score;
     }
+
     return userItems;
 }, (error) => {
     console.error('Ajax error: ', error);
@@ -50,13 +51,13 @@ getJson('https://api.github.com/search/users?q=xiaobao66').then((json) => {
 
 //Promise.prototype.catch
 let errPromise = new Promise((resolve, reject) => {
-    setTimeout(function () {
-        // reject(new Error('Throw err'));
-        throw new Error('Throw err');
-    }, 500);
+    throw new Error('Throw err');
 });
 errPromise.then((json) => {
     console.log(json);
 }).catch((err) => {
     console.error(err);
+    return 'hello';
+}).then((value) => {
+    console.log(value);
 });

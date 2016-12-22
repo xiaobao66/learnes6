@@ -8267,5 +8267,19 @@
 	    console.log(value);
 	});
 
+	//Promise.all
+	Promise.all([getJson('https://api.github.com/'), getJson('https://api.github.com/search/users?q=ruanyf'), getJson('https://api.github.com/search/users?q=xiaobao66')]).then(function (results) {
+	    console.log(results);
+	}).catch(function (err) {
+	    console.error(err);
+	});
+
+	//Promise.race
+	Promise.race([getJson('https://api.github.com/'), getJson('https://api.github.com/search/users?q=ruanyf'), getJson('https://api.github.com/search/users?q=xiaobao66')]).then(function (results) {
+	    console.log(results);
+	}).catch(function (err) {
+	    console.error(err);
+	});
+
 /***/ }
 /******/ ]);

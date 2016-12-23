@@ -29,7 +29,9 @@ let getJson = function (url) {
 let genGetGitHubUserInfo = function (url) {
     return function*() {
         let result = yield getJson(url);
-        console.log(result);
+        console.log({
+            [result.login]: result.id
+        });
     }
 };
 
@@ -73,4 +75,25 @@ let run2 = function (gen) {
     next();
 };
 
-run2(genGetGitHubUserInfo('https://api.github.com/users/github'));
+run2(genGetGitHubUserInfo('https://api.github.com/users/xiaobao66'));
+
+//async函数
+let getGitHubUserInfo2 = async function (...urls) {
+    let resultPromises = urls.map(async(url) => {
+        let result = await getJson(url);
+        return result;
+    });
+
+    let results = {};
+    for (let resultPromise of resultPromises) {
+        let result = await resultPromise;
+        results[result.login] = result.id;
+    }
+
+    return results;
+};
+
+getGitHubUserInfo2('https://api.github.com/users/github', 'https://api.github.com/users/xiaobao66')
+    .then((results) => {
+        console.log(results);
+    });

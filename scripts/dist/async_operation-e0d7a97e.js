@@ -8180,6 +8180,10 @@
 
 	'use strict';
 
+	function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	/**
 	 * Created by xiaobao on 2016/12/23.
 	 */
@@ -8221,7 +8225,7 @@
 	                    case 2:
 	                        result = _context.sent;
 
-	                        console.log(result);
+	                        console.log(_defineProperty({}, result.login, result.id));
 
 	                    case 4:
 	                    case 'end':
@@ -8272,7 +8276,129 @@
 	    next();
 	};
 
-	run2(genGetGitHubUserInfo('https://api.github.com/users/github'));
+	run2(genGetGitHubUserInfo('https://api.github.com/users/xiaobao66'));
+
+	//async函数
+	var getGitHubUserInfo2 = function () {
+	    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee3() {
+	        var _this = this;
+
+	        for (var _len = arguments.length, urls = Array(_len), _key = 0; _key < _len; _key++) {
+	            urls[_key] = arguments[_key];
+	        }
+
+	        var resultPromises, results, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, resultPromise, _result;
+
+	        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+	            while (1) {
+	                switch (_context3.prev = _context3.next) {
+	                    case 0:
+	                        resultPromises = urls.map(function () {
+	                            var _ref2 = _asyncToGenerator(regeneratorRuntime.mark(function _callee2(url) {
+	                                var result;
+	                                return regeneratorRuntime.wrap(function _callee2$(_context2) {
+	                                    while (1) {
+	                                        switch (_context2.prev = _context2.next) {
+	                                            case 0:
+	                                                _context2.next = 2;
+	                                                return getJson(url);
+
+	                                            case 2:
+	                                                result = _context2.sent;
+	                                                return _context2.abrupt('return', result);
+
+	                                            case 4:
+	                                            case 'end':
+	                                                return _context2.stop();
+	                                        }
+	                                    }
+	                                }, _callee2, _this);
+	                            }));
+
+	                            return function (_x) {
+	                                return _ref2.apply(this, arguments);
+	                            };
+	                        }());
+	                        results = {};
+	                        _iteratorNormalCompletion = true;
+	                        _didIteratorError = false;
+	                        _iteratorError = undefined;
+	                        _context3.prev = 5;
+	                        _iterator = resultPromises[Symbol.iterator]();
+
+	                    case 7:
+	                        if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
+	                            _context3.next = 16;
+	                            break;
+	                        }
+
+	                        resultPromise = _step.value;
+	                        _context3.next = 11;
+	                        return resultPromise;
+
+	                    case 11:
+	                        _result = _context3.sent;
+
+	                        results[_result.login] = _result.id;
+
+	                    case 13:
+	                        _iteratorNormalCompletion = true;
+	                        _context3.next = 7;
+	                        break;
+
+	                    case 16:
+	                        _context3.next = 22;
+	                        break;
+
+	                    case 18:
+	                        _context3.prev = 18;
+	                        _context3.t0 = _context3['catch'](5);
+	                        _didIteratorError = true;
+	                        _iteratorError = _context3.t0;
+
+	                    case 22:
+	                        _context3.prev = 22;
+	                        _context3.prev = 23;
+
+	                        if (!_iteratorNormalCompletion && _iterator.return) {
+	                            _iterator.return();
+	                        }
+
+	                    case 25:
+	                        _context3.prev = 25;
+
+	                        if (!_didIteratorError) {
+	                            _context3.next = 28;
+	                            break;
+	                        }
+
+	                        throw _iteratorError;
+
+	                    case 28:
+	                        return _context3.finish(25);
+
+	                    case 29:
+	                        return _context3.finish(22);
+
+	                    case 30:
+	                        return _context3.abrupt('return', results);
+
+	                    case 31:
+	                    case 'end':
+	                        return _context3.stop();
+	                }
+	            }
+	        }, _callee3, this, [[5, 18, 22, 30], [23,, 25, 29]]);
+	    }));
+
+	    return function getGitHubUserInfo2() {
+	        return _ref.apply(this, arguments);
+	    };
+	}();
+
+	getGitHubUserInfo2('https://api.github.com/users/github', 'https://api.github.com/users/xiaobao66').then(function (results) {
+	    console.log(results);
+	});
 
 /***/ },
 /* 300 */

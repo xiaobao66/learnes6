@@ -1,6 +1,8 @@
 /**
  * Created by xiaobao on 2016/12/23.
  */
+let co = require('co');
+
 //Generator函数实现异步操作
 let getJson = function (url) {
     let promise = new Promise((resolve, reject) => {
@@ -24,12 +26,14 @@ let getJson = function (url) {
     return promise;
 };
 
-let genGetGitHubUserInfo = function*(url) {
-    let result = yield getJson(url);
-    console.log(result);
+let genGetGitHubUserInfo = function (url) {
+    return function*() {
+        let result = yield getJson(url);
+        console.log(result);
+    }
 };
 
-let getGitHubUserInfo = genGetGitHubUserInfo('https://api.github.com/users/github');
+let getGitHubUserInfo = genGetGitHubUserInfo('https://api.github.com/users/github')();
 let result = getGitHubUserInfo.next();
 
 result.value.then((result) => {
@@ -37,3 +41,36 @@ result.value.then((result) => {
 }).catch((err) => {
     console.error(err);
 });
+
+//使用co模块完成Generator函数自动执行
+co(genGetGitHubUserInfo('https://api.github.com/users/github'));
+
+//Generator函数基于Trunk函数自动执行
+let run = function (gen) {
+    let g = gen();
+
+    function next(err, data) {
+        let result = g.next(data);
+        if (result.done) return;
+        result.value(next);
+    }
+
+    next();
+};
+
+//Generator函数基于Promise对象自动执行
+let run2 = function (gen) {
+    let g = gen();
+
+    function next(data) {
+        let result = g.next(data);
+        if (result.done) return;
+        result.value.then((data) => {
+            next(data);
+        });
+    }
+
+    next();
+};
+
+run2(genGetGitHubUserInfo('https://api.github.com/users/github'));

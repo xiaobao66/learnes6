@@ -16,7 +16,8 @@ module.exports = {
         set_and_map: './scripts/src/set_and_map.js',
         proxy_and_reflect: './scripts/src/proxy_and_reflect.js',
         generator: ['babel-polyfill', './scripts/src/generator.js'],
-        promise: ['babel-polyfill', './scripts/src/promise.js']
+        promise: ['babel-polyfill', './scripts/src/promise.js'],
+        async_operation: ['babel-polyfill', './scripts/src/async_operation.js']
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -91,6 +92,11 @@ module.exports = {
             title: 'promise',
             filename: '../../demos/promise.html',
             chunks: ['promise']
+        }),
+        new HtmlWebpackPlugin({
+            title: '异步操作',
+            filename: '../../demos/async_operation.html',
+            chunks: ['async_operation']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

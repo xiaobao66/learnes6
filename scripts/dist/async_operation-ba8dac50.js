@@ -45,7 +45,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(1);
-	module.exports = __webpack_require__(301);
+	module.exports = __webpack_require__(299);
 
 
 /***/ },
@@ -8175,29 +8175,15 @@
 
 /***/ },
 /* 298 */,
-/* 299 */,
-/* 300 */,
-/* 301 */
+/* 299 */
 /***/ function(module, exports) {
 
 	'use strict';
 
 	/**
-	 * Created by xiaobao on 2016/12/22.
+	 * Created by xiaobao on 2016/12/23.
 	 */
-	//使用Promise
-	var timeout = new Promise(function (resolve, reject) {
-	    setTimeout(function () {
-	        resolve('done');
-	    }, 100);
-	});
-
-	timeout.then(function (value) {
-	    console.log(value);
-	});
-	//'done'
-
-	//Promise.prototype.then
+	//Generator函数实现异步操作
 	var getJson = function getJson(url) {
 	    var promise = new Promise(function (resolve, reject) {
 	        var xmlHttp = new XMLHttpRequest();
@@ -8220,63 +8206,33 @@
 	    return promise;
 	};
 
-	getJson('https://api.github.com/search/users?q=xiaobao66').then(function (json) {
-	    var userItems = {};
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
+	var genGetGitHubUserInfo = regeneratorRuntime.mark(function genGetGitHubUserInfo(url) {
+	    var result;
+	    return regeneratorRuntime.wrap(function genGetGitHubUserInfo$(_context) {
+	        while (1) {
+	            switch (_context.prev = _context.next) {
+	                case 0:
+	                    _context.next = 2;
+	                    return getJson(url);
 
-	    try {
-	        for (var _iterator = json.items[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	            var userItem = _step.value;
+	                case 2:
+	                    result = _context.sent;
 
-	            userItems[userItem.login] = userItem.score;
-	        }
-	    } catch (err) {
-	        _didIteratorError = true;
-	        _iteratorError = err;
-	    } finally {
-	        try {
-	            if (!_iteratorNormalCompletion && _iterator.return) {
-	                _iterator.return();
-	            }
-	        } finally {
-	            if (_didIteratorError) {
-	                throw _iteratorError;
+	                    console.log(result);
+
+	                case 4:
+	                case 'end':
+	                    return _context.stop();
 	            }
 	        }
-	    }
-
-	    return userItems;
-	}, function (error) {
-	    console.error('Ajax error: ', error);
-	}).then(function (userItems) {
-	    console.log(userItems);
+	    }, genGetGitHubUserInfo, this);
 	});
 
-	//Promise.prototype.catch
-	var errPromise = new Promise(function (resolve, reject) {
-	    throw new Error('Throw err');
-	});
-	errPromise.then(function (json) {
-	    console.log(json);
-	}).catch(function (err) {
-	    console.error(err);
-	    return 'hello';
-	}).then(function (value) {
-	    console.log(value);
-	});
+	var getGitHubUserInfo = genGetGitHubUserInfo('https://api.github.com/users/github');
+	var result = getGitHubUserInfo.next();
 
-	//Promise.all
-	Promise.all([getJson('https://api.github.com/'), getJson('https://api.github.com/search/users?q=ruanyf'), getJson('https://api.github.com/search/users?q=xiaobao66')]).then(function (results) {
-	    console.log(results);
-	}).catch(function (err) {
-	    console.error(err);
-	});
-
-	//Promise.race
-	Promise.race([getJson('https://api.github.com/'), getJson('https://api.github.com/search/users?q=ruanyf'), getJson('https://api.github.com/search/users?q=xiaobao66')]).then(function (results) {
-	    console.log(results);
+	result.value.then(function (result) {
+	    getGitHubUserInfo.next(result);
 	}).catch(function (err) {
 	    console.error(err);
 	});

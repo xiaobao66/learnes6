@@ -55,15 +55,79 @@ class VersionArray extends Array {
 let versionArray = new VersionArray();
 versionArray.push(1);
 versionArray.push(2);
-console.log(versionArray);
-console.log(versionArray.history);
+console.log(versionArray); // [1, 2]
+console.log(versionArray.history); // [[]]
 
 versionArray.commit();
-console.log(versionArray.history);
+console.log(versionArray.history); // [[], [1, 2]]
 
 versionArray.push(3);
 versionArray.push(4);
-console.log(versionArray);
+console.log(versionArray); // [1, 2, 3, 4]
 
 versionArray.revert();
-console.log(versionArray);
+console.log(versionArray); // [1, 2]
+
+//Class的Generator方法
+class GeneratorClass {
+    constructor(...args) {
+        this.args = args;
+    }
+
+    *[Symbol.iterator]() {
+        for (let arg of this.args) {
+            yield arg;
+        }
+    }
+}
+
+for (let value of new GeneratorClass('hello', 'xiaobao')) {
+    console.log(value);
+}
+/*
+ hello
+ xiaobao
+ */
+
+//Class的静态方法
+class StaticMethodClass {
+    constructor() {
+
+    }
+
+    static hello() {
+        return `hello`;
+    }
+}
+
+console.log(StaticMethodClass.hello()); // hello
+
+//静态方法可以被继承
+class ChildStaticMethodClass extends StaticMethodClass {
+    constructor() {
+        super();
+    }
+
+    static hello() {
+        return `${super.hello()}, too`;
+    }
+}
+
+console.log(ChildStaticMethodClass.hello()); // hello, too
+
+//new.target
+//指向调用new命令的构造函数，如果不是通过new命令调用new.target返回undefined
+class Rectangle {
+    constructor(length, width) {
+        console.log(new.target);
+    }
+}
+
+class Square extends Rectangle {
+    constructor(length) {
+        super(length, length);
+    }
+}
+
+new Rectangle(1, 2);
+new Square(1);

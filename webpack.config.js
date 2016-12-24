@@ -18,7 +18,7 @@ module.exports = {
         generator: ['babel-polyfill', './scripts/src/generator.js'],
         promise: ['babel-polyfill', './scripts/src/promise.js'],
         async_operation: ['babel-polyfill', './scripts/src/async_operation.js'],
-        es6_class: './scripts/src/es6_class.js'
+        es6_class: ['babel-polyfill', './scripts/src/es6_class.js']
     },
     output: {
         path: __dirname + '/scripts/dist/',

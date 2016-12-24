@@ -3,6 +3,15 @@
     "es2015"
   ],
   "plugins": [
-    "transform-async-to-generator"
+    "transform-async-to-generator",
+    [
+      "babel-plugin-transform-builtin-extend",
+      {
+        "globals": [
+          "Error",
+          "Array"
+        ]
+      }
+    ]
   ]
 }

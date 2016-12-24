@@ -17,7 +17,8 @@ module.exports = {
         proxy_and_reflect: './scripts/src/proxy_and_reflect.js',
         generator: ['babel-polyfill', './scripts/src/generator.js'],
         promise: ['babel-polyfill', './scripts/src/promise.js'],
-        async_operation: ['babel-polyfill', './scripts/src/async_operation.js']
+        async_operation: ['babel-polyfill', './scripts/src/async_operation.js'],
+        es6_class: './scripts/src/es6_class.js'
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -97,6 +98,11 @@ module.exports = {
             title: '异步操作',
             filename: '../../demos/async_operation.html',
             chunks: ['async_operation']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'ES6 Class',
+            filename: '../../demos/es6_class.html',
+            chunks: ['es6_class']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

@@ -119,7 +119,7 @@ console.log(ChildStaticMethodClass.hello()); // hello, too
 //指向调用new命令的构造函数，如果不是通过new命令调用new.target返回undefined
 class Rectangle {
     constructor(length, width) {
-        console.log(new.target);
+        console.log(new.target === Rectangle);
     }
 }
 
@@ -129,5 +129,5 @@ class Square extends Rectangle {
     }
 }
 
-new Rectangle(1, 2);
-new Square(1);
+new Rectangle(1, 2); // true
+new Square(1); // false

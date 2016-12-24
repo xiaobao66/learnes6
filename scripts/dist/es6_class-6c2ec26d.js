@@ -8490,7 +8490,7 @@
 	var Rectangle = function Rectangle(length, width) {
 	    _classCallCheck(this, Rectangle);
 
-	    console.log(new.target);
+	    console.log(new.target === Rectangle);
 	};
 
 	var Square = function (_Rectangle) {
@@ -8505,8 +8505,8 @@
 	    return Square;
 	}(Rectangle);
 
-	new Rectangle(1, 2);
-	new Square(1);
+	new Rectangle(1, 2); // true
+	new Square(1); // false
 
 /***/ }
 /******/ ]);

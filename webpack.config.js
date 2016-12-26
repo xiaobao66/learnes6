@@ -18,7 +18,8 @@ module.exports = {
         generator: ['babel-polyfill', './scripts/src/generator.js'],
         promise: ['babel-polyfill', './scripts/src/promise.js'],
         async_operation: ['babel-polyfill', './scripts/src/async_operation.js'],
-        es6_class: ['babel-polyfill', './scripts/src/es6_class.js']
+        es6_class: ['babel-polyfill', './scripts/src/es6_class.js'],
+        decorator: './scripts/src/decorator.js'
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -103,6 +104,11 @@ module.exports = {
             title: 'ES6 Class',
             filename: '../../demos/es6_class.html',
             chunks: ['es6_class']
+        }),
+        new HtmlWebpackPlugin({
+            title: '类修饰器',
+            filename: '../../demos/decorator.html',
+            chunks: ['decorator']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,

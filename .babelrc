@@ -4,6 +4,7 @@
   ],
   "plugins": [
     "transform-async-to-generator",
+    "transform-decorators-legacy",
     [
       "babel-plugin-transform-builtin-extend",
       {

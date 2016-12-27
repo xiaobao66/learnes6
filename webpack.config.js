@@ -19,7 +19,8 @@ module.exports = {
         promise: ['babel-polyfill', './scripts/src/promise.js'],
         async_operation: ['babel-polyfill', './scripts/src/async_operation.js'],
         es6_class: ['babel-polyfill', './scripts/src/es6_class.js'],
-        decorator: './scripts/src/decorator.js'
+        decorator: './scripts/src/decorator.js',
+        es6_module: './scripts/src/es6_module/es6_module.js'
     },
     output: {
         path: __dirname + '/scripts/dist/',
@@ -109,6 +110,11 @@ module.exports = {
             title: '类修饰器',
             filename: '../../demos/decorator.html',
             chunks: ['decorator']
+        }),
+        new HtmlWebpackPlugin({
+            title: 'ES6模块',
+            filename: '../../demos/es6_module.html',
+            chunks: ['es6_module']
         }),
         new CleanWebpackPlugin(['scripts/dist'], {
             root: __dirname,
